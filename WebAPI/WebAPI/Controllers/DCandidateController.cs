@@ -40,6 +40,19 @@ namespace WebAPI.Controllers
 
             return dCandidate;
         }
+        
+        [HttpGet("{emailId}")]
+        public async Task<ActionResult<DCandidate>> GetDCandidateByEmail(int emailId)
+        {
+            var dCandidate = await _context.DCandidates.FindAsync(emailId);
+
+            if (dCandidate == null)
+            {
+                return NotFound();
+            }
+
+            return dCandidate;
+        }
 
         // PUT: api/DCandidate/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
